@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyaud.idata.iam.biz.mapper.ProblemFeedbackMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zyaud.idata.iam.biz.model.entity.ProblemFeedback">
+        <result column="opinion_title" property="opinionTitle" />
+        <result column="issue_system" property="issueSystem" />
+        <result column="issue_details" property="issueDetails" />
+        <result column="state" property="state" />
+        <result column="id" property="id" />
+        <result column="del_flag" property="delFlag" />
+        <result column="create_time" property="createTime" />
+        <result column="create_id" property="createId" />
+        <result column="update_time" property="updateTime" />
+        <result column="update_id" property="updateId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        opinion_title,
+        issue_system,
+        issue_details,
+        state,
+        update_time,
+        update_id,
+    </sql>
+
+</mapper>

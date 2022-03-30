@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyaud.idata.iam.biz.mapper.UserCodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zyaud.idata.iam.biz.model.entity.UserCode">
+        <result column="user_id" property="userId"/>
+        <result column="login_name" property="loginName"/>
+        <result column="passwd" property="passwd"/>
+        <result column="salt" property="salt"/>
+        <result column="status" property="status"/>
+        <result column="pwd_update_time" property="pwdUpdateTime"/>
+        <result column="default_roles" property="defaultRoles"/>
+        <result column="id" property="id"/>
+        <result column="create_id" property="createId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_id" property="updateId"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="del_flag" property="delFlag"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_id,
+        create_time,
+        update_id,
+        update_time,
+        del_flag,
+        user_id, login_name, passwd, salt, status, pwd_update_time, default_roles
+    </sql>
+
+    <select id="getAppframeSyncUser" resultType="com.zyaud.idata.iam.api.req.DTO.RemoteUserInfoCreateReqDTO">
+        SELECT
+            a.ID userId,
+            b.LOGIN_NAME loginName,
+            c.CODE orgCode,
+            a.NAME userName,
+            b.STATUS status
+        FROM
+            iam_user a,
+            iam_user_code b,
+            iam_office c
+        WHERE
+            b.user_id = a.id
+        AND a.office_id = c.id
+        AND a.del_flag = 0
+        AND b.del_flag = 0
+        AND c.del_flag = 0
+    </select>
+</mapper>

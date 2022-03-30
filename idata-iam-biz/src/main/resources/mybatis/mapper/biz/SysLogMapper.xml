@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyaud.idata.iam.biz.mapper.SysLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zyaud.idata.iam.biz.model.entity.SysLog">
+        <result column="app_code" property="appCode" />
+        <result column="module" property="module" />
+        <result column="log_type" property="logType" />
+        <result column="remote_ip" property="remoteIp" />
+        <result column="operate_type" property="operateType" />
+        <result column="operator" property="operator" />
+        <result column="infos" property="infos" />
+        <result column="browser" property="browser" />
+        <result column="os" property="os" />
+        <result column="id" property="id" />
+        <result column="create_id" property="createId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_id" property="updateId" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_id,
+        create_time,
+        update_id,
+        update_time,
+        del_flag,
+        app_id, module, log_type, remote_ip, operate_type, operator, infos, browser, os
+    </sql>
+
+
+    <select id="getAppCodes" resultType="com.zyaud.idata.iam.biz.model.vo.GetAppCodesVO">
+        SELECT
+        app_code AS appCode
+        FROM
+        iam_sys_log
+        <where>
+            del_flag=0
+        </where>
+        GROUP BY
+        app_code
+    </select>
+
+    <select id="getmodulesByAppCode"  resultType="java.lang.String" parameterType="java.lang.String">
+        SELECT
+        module
+        FROM
+        iam_sys_log
+        <where>
+            del_flag=0
+            and app_code=#{appCode}
+        </where>
+        GROUP BY
+        module
+    </select>
+
+</mapper>

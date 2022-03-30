@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>idata-iam</artifactId>
+        <groupId>com.zyaud.idata</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>idata-iam-application</artifactId>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zyaud.idata</groupId>
+            <artifactId>idata-iam-biz</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zyaud.idata</groupId>
+            <artifactId>idata-iam-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zyaud.idata</groupId>
+            <artifactId>idata-iam-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zyaud.idata</groupId>
+            <artifactId>idata-iam-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zyaud.thirds</groupId>
+            <artifactId>oscar</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.active>dev</profile.active>
+            </properties>
+            <!--			<dependencies>-->
+            <!--				<dependency>-->
+            <!--					<groupId>com.zyaud.fzhx</groupId>-->
+            <!--					<artifactId>fzhx-license-notary-starter</artifactId>-->
+            <!--					<version>1.0-SNAPSHOT</version>-->
+            <!--				</dependency>-->
+            <!--			</dependencies>-->
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profile.active>test</profile.active>
+            </properties>
+            <!--			<dependencies>-->
+            <!--				<dependency>-->
+            <!--					<groupId>com.zyaud.fzhx</groupId>-->
+            <!--					<artifactId>fzhx-license-notary-starter</artifactId>-->
+            <!--					<version>1.0-SNAPSHOT</version>-->
+            <!--				</dependency>-->
+            <!--			</dependencies>-->
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profile.active>prod</profile.active>
+            </properties>
+            <!--			<dependencies>-->
+            <!--				<dependency>-->
+            <!--					<groupId>com.zyaud.fzhx</groupId>-->
+            <!--					<artifactId>fzhx-license-notary-starter</artifactId>-->
+            <!--					<version>1.0-SNAPSHOT</version>-->
+            <!--				</dependency>-->
+            <!--			</dependencies>-->
+        </profile>
+        <profile>
+            <id>htm</id>
+            <properties>
+                <profile.active>htm</profile.active>
+            </properties>
+            <!--			<dependencies>-->
+            <!--				<dependency>-->
+            <!--					<groupId>com.zyaud.fzhx</groupId>-->
+            <!--					<artifactId>fzhx-license-notary-starter</artifactId>-->
+            <!--					<version>1.0-SNAPSHOT</version>-->
+            <!--				</dependency>-->
+            <!--			</dependencies>-->
+        </profile>
+    </profiles>
+    <build>
+        <resources>
+            <resource>
+                <directory>lib</directory>
+                <targetPath>/BOOT-INF/lib/</targetPath>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>bootstrap.yml</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.8.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>

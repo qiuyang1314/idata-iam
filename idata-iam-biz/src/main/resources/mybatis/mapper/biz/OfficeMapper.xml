@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyaud.idata.iam.biz.mapper.OfficeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zyaud.idata.iam.biz.model.entity.Office">
+        <result column="parent_id" property="parentId" />
+        <result column="parent_ids" property="parentIds" />
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="paths" property="paths" />
+        <result column="order_index" property="orderIndex" />
+        <result column="app_id" property="appId" />
+        <result column="district_id" property="districtId" />
+        <result column="otype" property="otype" />
+        <result column="levels" property="levels" />
+        <result column="address" property="address" />
+        <result column="supervisor" property="supervisor" />
+        <result column="phone" property="phone" />
+        <result column="fax" property="fax" />
+        <result column="email" property="email" />
+        <result column="useable" property="useable" />
+        <result column="id" property="id" />
+        <result column="create_id" property="createId" />
+        <result column="create_time" property="createTime" />
+        <result column="update_id" property="updateId" />
+        <result column="update_time" property="updateTime" />
+        <result column="del_flag" property="delFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        create_id,
+        create_time,
+        update_id,
+        update_time,
+        del_flag,
+        parent_id, parent_ids, name,code,paths, order_index, app_id, district_id, otype, levels, address, supervisor, phone, fax, email, useable
+    </sql>
+
+    <select id="getAppframeSyncOrg" resultType="com.zyaud.idata.iam.api.req.DTO.RemoteOrgCreateReqDTO">
+        SELECT
+            a. CODE orgCode,
+            a. NAME orgName,
+                CASE
+            WHEN a.parent_id = '-1' THEN
+                ''
+            ELSE
+                (
+                    SELECT
+                        CODE
+                    FROM
+                        iam_office
+                    WHERE
+                        id = a.parent_id
+                        and del_flag = 0
+                )
+        END parentOrgCode,
+         a.email email,
+         a.address orgAddr
+        FROM
+            iam_office a
+        WHERE
+            a.del_flag = 0
+    </select>
+</mapper>

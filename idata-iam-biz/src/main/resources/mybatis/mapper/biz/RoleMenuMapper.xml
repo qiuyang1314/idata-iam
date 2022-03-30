@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyaud.idata.iam.biz.mapper.RoleMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.zyaud.idata.iam.biz.model.entity.RoleMenu">
+        <id column="app_id" property="appId" />
+        <result column="role_id" property="roleId" />
+        <result column="menu_id" property="menuId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        app_id, role_id, menu_id
+    </sql>
+
+</mapper>

@@ -1,0 +1,171 @@
+spring:
+  application:
+    name: idata-iam
+    version: 1.0-SNAPSHOT
+  cloud:
+    nacos:
+      server-addr: 10.5.233.77:8848
+      config:
+        file-extension: properties
+        namespace: 5da5f4c9-1abf-4b2d-ae22-d16c447128d2
+        group: DEFAULT_GROUP
+        refresh-enabled: true
+      discovery:
+        namespace: 5da5f4c9-1abf-4b2d-ae22-d16c447128d2
+        group: DEFAULT_GROUP
+#server:
+#  port: 9315
+#spring:
+#  web:
+#    resources:
+#      static-locations: file:/static
+#  datasource:
+#    #    url: jdbc:dm://172.17.2.240:5200/idatadb
+#    #    driver-class-name: dm.jdbc.driver.DmDriver
+#    #    ip: 172.17.2.240
+#    #    port: 5200
+#    #    servername: idatadb
+#    #    schem: IDATA-IAM
+#    #    username: IDATA-IAM
+#    #    password: IDATA-IAM
+#    #    dbtype: 7
+#    #    driver-class-name: com.mysql.cj.jdbc.Driver
+#    #    url: jdbc:mysql://175.42.30.161:46795/idata-iam?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false
+#    #    username: root
+#    #    password: 1qaz!QAZ
+#    host: 10.5.232.131
+#    port: 2003
+#    servername: OSRDB
+#    dbtype: 9
+#    dbschema: IDATA_IAM
+#    dbFilePath:
+#    driver-class-name: com.oscar.Driver
+#    url: jdbc:oscar://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.servername}
+#    username: IDATA_IAM
+#    password: szoscar55
+#  redis:
+#    database: 0
+#    host: 10.2.65.55
+#    port: 6379
+#    password:
+#  feign:
+#    url:
+#      #      comet: http://172.17.2.213:8387
+#      #      appframe: http://172.17.2.225:8092
+#      #      foundation: http://172.17.2.226:9321
+#      comet: http://172.17.2.213:8387
+#      appframe: http://172.17.2.225:8092
+#      foundation: http://10.2.65.55:9321
+#  servlet:
+#    multipart:
+#      max-request-size: 200MB #总文件大小
+#      max-file-size: 200MB #单个文件大小
+#  ipConfig: false
+#  dataPermission: true
+#  preview_prefix: /${spring.application.name}/
+#  application:
+#    name: idata-iam
+#    version: 1.0-SNAPSHOT
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 10.5.233.77:8848
+#        file-extension: yaml
+#        namespace: 5da5f4c9-1abf-4b2d-ae22-d16c447128d2
+#        group: idata-dev
+#        refresh-enabled: true
+#      discovery:
+#        server-addr: 10.5.233.77:8848
+#        namespace: 5da5f4c9-1abf-4b2d-ae22-d16c447128d2
+#        group: idata-dev
+#  #ip白名单 使用逗号分割
+#  ip-white-list: 127.0.0.1,0:0:0:0:0:0:0:1
+#  #验证码复杂度(true:字母数字混合，false:纯数字)
+#  captchaComplexity: false
+#  captchaBackColor: 0x327DC4
+#  captchaFontColor: 0x4fd3f1
+#  captchaByKey: false
+#  syncAppframe: true
+#  mvc:
+#    pathmatch:
+#      matching-strategy: ant_path_matcher
+#
+#logging:
+#  file:
+#    name: logs/idata-iam-svr.log
+#
+#fdfs:
+#  pool:
+#    max-total: 200
+#    max-total-per-key: 50
+#    max-wait-millis: 5000
+#  so-timeout: 2500
+#  connect-timeout: 600
+#  tracker-list:
+#    - 172.17.2.230:22122
+#
+##问题图片地址
+#wttp:
+#  ip: 172.17.2.230:80
+#
+#
+##mybatisplus设置
+#mybatis-plus:
+#  mapper-locations: classpath*:/mybatis/mapper/**/*.xml
+#  type-handlers-package: com.zyaud.fzhx.core.mybatis
+#  global-config:
+#    db-config:
+#      logic-delete-field: delFlag
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0
+#
+#fzhx:
+#  cache:
+#    type: REDIS
+#    topicName: fzhx-sync-topic
+#  license:
+#    subject: cdi-ows
+#    lic-path: idata-iam.lic
+#  bind:
+#    enabled: true
+#    aop-enabled: true
+#    ##0redis 1 db
+#    ##跳过拦截
+#    ##token秘钥
+#  iam:
+#    store-type: 0
+#    exclude-path:
+#      - "/system/user-code/login"
+#    token:
+#      secret: RlpIWF9JQU1fS0VZ
+#  swagger:
+#    enabled: true
+#    docket:
+#      iam:
+#        group: "统一权限管理平台接口文档"
+#  fs:
+#    default-disk: minio
+#    disks:
+#      - disk: minio
+#        storage: MINIO
+#        bucket: minio-test
+#        endpoint: http://175.42.30.161:19880
+#        accessKey: minioadmin
+#        accessSecret: minioadmin123
+#
+##神软同步过来的用户初始化有哪些角色
+##注意JDJCSZR,PZJJZZZ,SCDCSZR可以配多个角色，在iam（按需）配置
+#idata-iam:
+#  shenRuanIamInitRole: gzt,xmptgly,xmptgly,sjglptgly,sjhjxt,sjfxptgly,1004
+#tyqx:
+#  app_id: "fiaud"
+##统一权限配置
+#drap_platform:
+#  auth:
+#    identity:
+#      serviceId: 101
+#  sso_server:
+#    rootpath: http://10.2.65.55:8080/tyqx
+#  dataSource_server:
+#    rootpath: http://10.2.65.55:***/***
+#  parentId: orgRootDomain

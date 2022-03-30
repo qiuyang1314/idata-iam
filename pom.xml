@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zyaud.idata</groupId>
+    <artifactId>idata-iam</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>idata-iam-api</module>
+        <module>idata-iam-application</module>
+        <module>idata-iam-common</module>
+        <module>idata-iam-biz</module>
+        <module>idata-iam-client</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <fzhx.version>1.6-SNAPSHOT</fzhx.version>
+        <idata-foundation.version>1.0-SNAPSHOT</idata-foundation.version>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>nexus-htm-maven-releases</name>
+            <url>http://175.42.30.161:19871/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>nexus-htm-maven-snapshots</name>
+            <url>http://175.42.30.161:19871/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.zyaud.fzhx</groupId>
+                <artifactId>fzhx-bom</artifactId>
+                <version>${fzhx.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-iam-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-iam-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-iam-biz</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-iam-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-iam-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-foundation-util</artifactId>
+                <version>${idata-foundation.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-foundation-common</artifactId>
+                <version>${idata-foundation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zyaud.idata</groupId>
+                <artifactId>idata-foundation-config</artifactId>
+                <version>${idata-foundation.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
